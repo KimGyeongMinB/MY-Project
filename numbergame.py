@@ -15,7 +15,7 @@
 #숫자 맞추기 게임
 
 import random
-from flask import Flask, render_template
+from flask import Flask
 app = Flask(__name__)
 
 random_number = random.randint(1, 100)
