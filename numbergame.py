@@ -12,35 +12,51 @@
 #     - 플레이어가 컴퓨터의 숫자를 정확히 맞히면 시도한 횟수를 알려줍니다.
 #     - 플레이어가 숫자를 맞힐 때까지 위 과정을 반복합니다.
 
-#숫자 맞추기 게임
-
+# 숫자 맞추기 게임
 import random
-from flask import Flask
-app = Flask(__name__)
 
-random_number = random.randint(1, 100)
 i = 0
-
-nu = {
-    'random_number': random_number,
-    'i': i,
-}
+random_number = random.randint(1, 100)
 
 
-# while = 맞출때까지 반복
-while True:
-    m_num = int(input("숫자를 입력하시오"))
-    i = i+1
-    if random_number == m_num:
-        print('정답입니다')
-        print(str(i) + '회 진행하였습니다')
-        break
-    elif 0 >= m_num or 100 < m_num:
-        print("잘못된 결과값 입니다.")
-        print(str(i) + '회 진행하였습니다')
-    elif random_number >= m_num:
-        print("업")
-        print(str(i) + '회 진행하였습니다')
-    elif random_number <= m_num:
-        print("다운")
-        print(str(i) + '회 진행하였습니다')
+def num_game(max_record=0):
+    i = 0
+    random_number = random.randint(1, 100)
+
+    if max_record != 0:
+        print(f'최고 기록 {max_record} 회')
+
+    # while = 맞출때까지 반복
+
+    while True:
+        m_num = int(input('숫자 입력'))
+        i = i+1
+        if random_number == int(m_num):
+            print('정답입니다')
+            print(f'{i} 회 진행하였습니다')
+            min(max_record or i, i)
+            break
+        elif 0 > m_num or 100 < m_num:
+            print("잘못된 결과값 입니다.")
+            print(f'{i} 회 진행하였습니다')
+        elif random_number >= m_num and m_num:
+            print("업")
+            print(f'{i} 회 진행하였습니다')
+        elif random_number <= m_num and m_num:
+            print("다운")
+            print(f'{i} 회 진행하였습니다')
+
+    while True:
+        restart_1 = input('재시작 및 종료를 하려면 reset,Yes 또는 NO를 입력하세요')
+        if restart_1 == "NO":
+            print("게임을 종료합니다")
+            print(f'{i} 회 진행하였습니다')
+            break
+    # 게임 리셋 및 재시작
+        elif restart_1 == "reset" or restart_1 == "Yes":
+            print("게임을 다시 시작하겠습니다.")
+            num_game(max_record)
+            i = 0
+
+
+num_game()
