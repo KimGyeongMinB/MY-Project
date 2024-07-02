@@ -1,13 +1,13 @@
 # 가위바위보 게임
 
-import random
+import random  # 랜덤함수 호출
 
 # i = Player win, c_e = computer win, d_i = draw
 i = 0
 c_e = 0
 d_i = 0
 
-while True:
+while True:  # 값이 맞을때 까지 진행
 
     # 가위 바위 보 값 입력 하는 곳
     my_rcp = input("가위 바위 보를 하십시오")
@@ -59,21 +59,23 @@ while True:
         print("lose")
         print(str(c_e) + '회 패배')
 
+    # Yes '입력하면 reset으로 돌아가서 실행', no '입력하면 종료 후 승리,무승부,패배 순으로 표시'
     elif my_rcp.lower() == "stop":
         my_rcp = input("재시작 하시겠습니까? 재시작 하시려면 Yes, 종료하시려면 No을 입력해주세요")
-
+    # 게임 리셋 및 재시작
     elif my_rcp.lower() == "reset" or my_rcp.lower() == "Yes":
         print("게임을 다시 시작하겠습니다.")
         i = 0
         c_e = 0
         d_i = 0
-
+    # 게임 종료
     elif my_rcp.lower() == "NO":
         print("게임을 종료합니다")
         print(str(i) + '회 승리')
         print(str(d_i) + '회 무승부')
         print(str(c_e) + '회 패배')
 
+    # 만약 paper, scissors, rock, reset, stop, yes, no 를 제외한 다른 단어를 입력하면 input 출력이 안됨
     elif my_rcp.lower() != "paper" or my_rcp.lower() != "scissors" or my_rcp.lower() != "rock" or my_rcp.lower() != "reset" or my_rcp.lower() != "stop" or my_rcp.lower() != "YES" or my_rcp.lower() != "NO":
         print("rock, paper, scissors 중 하나만 입력해 주십시오")
 
