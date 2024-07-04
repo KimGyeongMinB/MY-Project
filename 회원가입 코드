@@ -1,0 +1,17 @@
+sign_up = input("회원가입")
+
+sign_up_people = [{'name':'kyungmin', 'age':24},{'name':'kudo', 'age':22}]
+if sign_up == "네":
+    print("회원가입 페이지로 이동합니다.")
+    sign_up_name = input("이름을 입력하세요")
+    sign_up_age = int(input("나이을 입력하세요"))
+    if sign_up_name and sign_up_age != "":
+        new_member = {'name':sign_up_name, 'age':sign_up_age}
+        sign_up_people.append((new_member))
+        print('회원가입이 완료되었습니다.')
+        print(sign_up_people)
+    else:
+        print('이름 또는 나이를 작성하지 않았습니다')
+
+else:
+    print("홈페이지로 돌아갑니다.")
